@@ -4,6 +4,7 @@ from diffusers.utils import load_image, check_min_version
 from controlnet_flux import FluxControlNetModel
 from transformer_flux import FluxTransformer2DModel
 from pipeline_flux_controlnet_inpaint import FluxControlNetInpaintingPipeline
+import os
 
 check_min_version("0.30.2")
 
@@ -42,6 +43,10 @@ def main(image_path, mask_path, prompt, save_path):
         negative_prompt="",
         true_guidance_scale=1.0 # default: 3.5 for alpha and 1.0 for beta
     ).images[0]
+
+    # Make save_path directory if it doesn't exist
+    if not os.path.exists(os.path.dirname(save_path)):
+        os.makedirs(os.path.dirname(save_path))
 
     result.save(save_path)
     print("Successfully inpainted image")
