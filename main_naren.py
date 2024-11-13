@@ -10,6 +10,7 @@ check_min_version("0.30.2")
 image_path='https://huggingface.co/alimama-creative/FLUX.1-dev-Controlnet-Inpainting-Alpha/resolve/main/images/bucket.png',
 mask_path='https://huggingface.co/alimama-creative/FLUX.1-dev-Controlnet-Inpainting-Alpha/resolve/main/images/bucket_mask.jpeg',
 prompt='a person wearing a white shoe, carrying a white bucket with text "FLUX" on it'
+save_path='flux_inpaint.png'
 
 # Build pipeline
 controlnet = FluxControlNetModel.from_pretrained("alimama-creative/FLUX.1-dev-Controlnet-Inpainting-Alpha", torch_dtype=torch.bfloat16)
@@ -46,5 +47,5 @@ result = pipe(
     true_guidance_scale=1.0 # default: 3.5 for alpha and 1.0 for beta
 ).images[0]
 
-result.save('flux_inpaint.png')
+result.save(save_path)
 print("Successfully inpaint image")
