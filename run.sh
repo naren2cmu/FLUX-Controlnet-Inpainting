@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Define the image name
-image_name="00001659"
+image_name="road2"
 
 # Set the paths and prompt
-source_image="source_images/cones/${image_name}.jpg"
+source_image="source_images/road/${image_name}.jpg"
 mask_image="mask_images/${image_name}_mask.png"
-text_prompt="green colored cone"
+text_prompt="brown shaded left side of the road"
 save_path="output_images/${image_name}_output.png"
 
 # Run the Python script with the specified arguments
